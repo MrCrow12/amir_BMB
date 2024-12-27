@@ -743,6 +743,12 @@ class SMS_Api:
             return output
     
         def runInTerminal():
+            print(Fore.GREEN+"Check internet connection...")
+            time.sleep(1)
+            print(Fore.GREEN + "Check server activity...")
+            time.sleep(1)
+            print(Style.RESET_ALL)
+            os.system("cls")
             def bar(smsSent,sms,output):
                 os.system("cls")
                 percent = (smsSent / sms) * 100
@@ -826,4 +832,3 @@ class SMS_Api:
                 webs=active_webs
             print(Style.RESET_ALL)
 
-SMS_Api.run.runInTerminal()
