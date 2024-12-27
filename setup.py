@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='amir_sms_bomber',
+    name='amir_BMB',
     version='1.0',
     packages=find_packages(),
     install_requires=[
